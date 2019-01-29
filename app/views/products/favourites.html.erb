@@ -1,0 +1,20 @@
+<h3>
+  Favourites!
+</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= image_tag product.image, size: '100' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

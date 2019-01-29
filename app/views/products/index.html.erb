@@ -1,0 +1,54 @@
+<%= notice %>
+
+<h2>
+  Index!
+</h2>
+
+<%= form_with(model: @product, local: true, class: 'form-inline') do |form| %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price %>
+    <%= form.number_field :price, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.text_field :image, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Enviar' %>
+
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.description %></td>
+        <td><%= image_tag product.image, size: '100' %></td>
+        <td><%= link_to 'Favourite', set_favourite_path(product), method: :patch %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product_path(product), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
